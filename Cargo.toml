@@ -1,12 +1,12 @@
 [package]
-name = "reliquary-archiver"
-version = "0.1.11"
+name = "artifactarium-archiver"
+version = "0.1.0"
 edition = "2021"
 license = "MIT"
-repository = "https://github.com/IceDynamix/reliquary-archiver"
+repository = "https://github.com/hashblen/artifactarium-archiver"
 publish = false
 readme = "README.md"
-homepage = "https://github.com/IceDynamix/reliquary-archiver"
+homepage = "https://github.com/hashblen/artifactarium-archiver"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
@@ -21,11 +21,11 @@ serde_json = "1.0.128"
 tracing = "0.1.40"
 tracing-subscriber = { version = "0.3.18", features = ["env-filter", "json"] }
 ureq = { version = "2.10.1" }
-reliquary = { git = "https://github.com/IceDynamix/reliquary", tag = "v4.0.0" }
+artifactarium = { path = "Z:/smallProjects/artifactarium" }
 
 [build-dependencies]
 ureq = { version = "2.10.1", features = ["json"] }
-reliquary = { git = "https://github.com/IceDynamix/reliquary", tag = "v4.0.0" }
+artifactarium = { path = "Z:/smallProjects/artifactarium" }
 
 [profile.release]
 opt-level = "z"  # optimize for size

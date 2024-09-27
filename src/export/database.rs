@@ -1,10 +1,10 @@
 use base64::prelude::BASE64_STANDARD;
 use base64::Engine;
-use reliquary::resource::excel::{
+use artifactarium::resource::excel::{
     AvatarConfigMap, AvatarSkillTreeConfigMap, EquipmentConfigMap, MultiplePathAvatarConfigMap,
     RelicConfigMap, RelicMainAffixConfigMap, RelicSetConfigMap, RelicSubAffixConfigMap,
 };
-use reliquary::resource::text_map::TextMap;
+use artifactarium::resource::text_map::TextMap;
 use serde::de::DeserializeOwned;
 use std::collections::HashMap;
 use tracing::{info, instrument};
@@ -19,7 +19,7 @@ pub struct Database {
     pub relic_main_affix_config: RelicMainAffixConfigMap,
     pub relic_sub_affix_config: RelicSubAffixConfigMap,
     pub text_map: TextMap,
-    pub keys: HashMap<u32, Vec<u8>>,
+    pub keys: HashMap<u16, Vec<u8>>,
 }
 
 impl Database {
@@ -75,8 +75,8 @@ impl Database {
         serde_json::de::from_str(str).unwrap()
     }
 
-    fn load_local_keys() -> HashMap<u32, Vec<u8>> {
-        let keys: HashMap<u32, String> =
+    fn load_local_keys() -> HashMap<u16, Vec<u8>> {
+        let keys: HashMap<u16, String> =
             Self::parse_json(include_str!(concat!(env!("OUT_DIR"), "/keys.json")));
         let mut keys_bytes = HashMap::new();
 

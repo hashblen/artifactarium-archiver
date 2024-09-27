@@ -2,16 +2,16 @@ use std::env;
 use std::fs::File;
 use std::path::Path;
 
-use reliquary::resource::excel::{
+use artifactarium::resource::excel::{
     AvatarConfigMap, AvatarSkillTreeConfigMap, EquipmentConfigMap, MultiplePathAvatarConfigMap,
     RelicConfigMap, RelicMainAffixConfigMap, RelicSetConfigMap, RelicSubAffixConfigMap,
 };
-use reliquary::resource::ResourceMap;
+use artifactarium::resource::ResourceMap;
 use ureq::serde_json::Value;
 
 const BASE_RESOURCE_URL: &str = "https://raw.githubusercontent.com/Dimbreath/StarRailData/master";
 const KEY_URL: &str =
-    "https://raw.githubusercontent.com/juliuskreutz/stardb-exporter/master/keys.json";
+    "https://gist.githubusercontent.com/hashblen/5a28fb052aea979290e4767003738e33/raw/c898da0158f76b2be46c700c926fbb213f5241e8/keys.json";
 
 fn main() {
     println!("cargo::rerun-if-changed=Cargo.toml");

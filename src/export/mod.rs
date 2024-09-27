@@ -1,4 +1,4 @@
-use reliquary::network::GameCommand;
+use artifactarium::network::GameCommand;
 
 pub mod database;
 pub mod fribbels;

@@ -5,16 +5,16 @@ use std::time::Duration;
 
 use clap::Parser;
 use pcap::{ConnectionStatus, Device, Error};
-use reliquary::network::gen::command_id::{PlayerLoginFinishScRsp, PlayerLoginScRsp};
-use reliquary::network::{ConnectionPacket, GamePacket, GameSniffer};
+// use artifactarium::network::gen::command_id::{PlayerLoginFinishScRsp, PlayerLoginScRsp};
+use artifactarium::network::{ConnectionPacket, GamePacket, GameSniffer};
 use tracing::{debug, error, info, instrument, trace, warn};
 use tracing_subscriber::{prelude::*, EnvFilter, Layer, Registry};
 
-use reliquary_archiver::export::database::Database;
-use reliquary_archiver::export::fribbels::OptimizerExporter;
-use reliquary_archiver::export::Exporter;
+use artifactarium_archiver::export::database::Database;
+use artifactarium_archiver::export::fribbels::OptimizerExporter;
+use artifactarium_archiver::export::Exporter;
 
-const PACKET_FILTER: &str = "udp portrange 23301-23302";
+const PACKET_FILTER: &str = "udp portrange 22101-22102";
 
 #[derive(Parser, Debug)]
 struct Args {
@@ -218,14 +218,14 @@ where
                             invalid -= 10;
 
                             for command in commands {
-                                if command.command_id == PlayerLoginScRsp {
-                                    info!("detected login");
-                                }
-
-                                if command.command_id == PlayerLoginFinishScRsp {
-                                    info!("detected login end, assume initialization is finished");
-                                    break 'recv;
-                                }
+                                // if command.command_id == PlayerLoginScRsp {
+                                //     info!("detected login");
+                                // }
+                                //
+                                // if command.command_id == PlayerLoginFinishScRsp {
+                                //     info!("detected login end, assume initialization is finished");
+                                //     break 'recv;
+                                // }
 
                                 exporter.read_command(command);
                             }
